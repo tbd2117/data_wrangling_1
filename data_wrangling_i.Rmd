@@ -34,6 +34,11 @@ tail(litters_df) #check last 6 rows
 skimr::skim(litters_df)
 ```
 
+## Options to read_csv
 
-
+Check out `?read_csv` for more information.
+```{r}
+litters_df = read_csv("./data_import_examples/fas_litters.csv", skip = 10, col_names = FALSE)
+litters_df = read_csv("./data_import_examples/fas_litters.csv", na = c("", "NA", 999)) #values in this list will be considered missing
 ```
+

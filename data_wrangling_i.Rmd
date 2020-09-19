@@ -1,0 +1,22 @@
+---
+title: "Data_Import"
+output: github_document
+date: 09/19/2020
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## Read in some data
+
+Read in the litters dataset.
+
+```{r}
+litters_df = read_csv("./data_import_examples/fas_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
+## Take a look at the data
+
+litters_df

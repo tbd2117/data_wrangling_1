@@ -86,3 +86,35 @@ analysis_result %>%
 ``` r
 # tidy but wider now
 ```
+
+## Binding rows using the LoR data
+
+First step is import each table
+
+``` r
+fellowship_ring = 
+  readxl::read_excel("./data_import_examples/LotR_Words.xlsx", range = "b3:d6") %>% 
+  mutate(movie = "fellowship_ring")
+
+two_towers = 
+  readxl::read_excel("./data_import_examples/LotR_Words.xlsx", range = "f3:h6") %>% 
+  mutate(movie = "two_towers")
+
+return_king = 
+  readxl::read_excel("./data_import_examples/LotR_Words.xlsx", range = "j3:l6") %>% 
+  mutate(movie = "return_king")
+```
+
+Bind all the rows together
+
+``` r
+lotr_tidy=
+  bind_rows(fellowship_ring, two_towers, return_king) %>% 
+  janitor::clean_names() %>% 
+  relocate(movie) %>% 
+  pivot_longer(
+    female:male, 
+    names_to = "gender",
+    values_to = "words"
+  )
+```

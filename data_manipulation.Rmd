@@ -95,6 +95,10 @@ mutate(
   wt_gain = gd18_weight - gd0_weight,
   group = str_to_lower(group) #made the group variable have al lower case characters!
 )
+
+#checking some stuff from the class material
+mutate(litters_df, gd0_greater20 = gd0_weight > 20 ) %>% #TRUE / FALSE statements for new variable
+  select(-pups_survive)
 ```
 
 ## `arrange`

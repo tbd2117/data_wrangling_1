@@ -15,3 +15,43 @@ litters_df = read_csv("./data_import_examples/fas_litters.csv")
 litters_df = janitor ::clean_names(litters_df)
 ```
 
+## `select`
+
+Choose some columns and not others
+
+```{r}
+select(litters_df, group, gd0_weight)
+```
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth) #range of columns first:last
+```
+
+```{r}
+select(litters_df, -litter_number) #removes specific column
+```
+
+Renaming columns
+
+```{r}
+select(litters_df, GROUP = group, gd0_weight) #there is a specific function - rename() for this!
+rename(litters_df, GROUP = group)
+```
+
+Select helpers
+
+```{r}
+select(litters_df, starts_with("gd")) #you can mix:
+select(litters_df, group, starts_with("gd"))
+```
+
+```{r}
+select(litters_df, litter_number, everything()) # the everything brings everything, but also EVERYTHING ELSE
+```
+Same thing as...
+```{r}
+relocate(litters_df, gd_of_birth)
+```
+
+
+
